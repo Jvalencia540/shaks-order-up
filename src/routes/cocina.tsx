@@ -92,7 +92,7 @@ function CocinaPage() {
                   <p className="text-xl font-extrabold text-primary">{formatCOP(o.total)}</p>
                   <button
                     onClick={() => markReady(o.id)}
-                    className="min-h-16 rounded-2xl bg-accent text-xl font-extrabold text-accent-foreground transition-transform active:scale-95"
+                    className="min-h-16 rounded-2xl bg-info text-xl font-extrabold text-info-foreground transition-transform active:scale-95"
                   >
                     ✅ LISTO — NOTIFICAR CLIENTE
                   </button>
