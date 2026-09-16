@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CocinaRouteImport } from './routes/cocina'
+import { Route as MetricasRouteImport } from './routes/metricas'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CocinaRoute = CocinaRouteImport.update({
+  id: '/cocina',
+  path: '/cocina',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MetricasRoute = MetricasRouteImport.update({
+  id: '/metricas',
+  path: '/metricas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cocina': typeof CocinaRoute
+  '/metricas': typeof MetricasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cocina': typeof CocinaRoute
+  '/metricas': typeof MetricasRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cocina': typeof CocinaRoute
+  '/metricas': typeof MetricasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/cocina' | '/metricas'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/cocina' | '/metricas'
+  id: '__root__' | '/' | '/cocina' | '/metricas'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CocinaRoute: typeof CocinaRoute
+  MetricasRoute: typeof MetricasRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cocina': {
+      id: '/cocina'
+      path: '/cocina'
+      fullPath: '/cocina'
+      preLoaderRoute: typeof CocinaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/metricas': {
+      id: '/metricas'
+      path: '/metricas'
+      fullPath: '/metricas'
+      preLoaderRoute: typeof MetricasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CocinaRoute: CocinaRoute,
+  MetricasRoute: MetricasRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
