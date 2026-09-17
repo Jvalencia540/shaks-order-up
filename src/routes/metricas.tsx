@@ -99,7 +99,10 @@ function MetricasPage() {
       : MONTH_SALES[MONTH_SALES.length - 1]?.sales ?? 0;
   const peak =
     period === "today"
-      ? TODAY_SALES.reduce((best, point) => (point.sales > best.sales ? point : best), TODAY_SALES[0])
+      ? TODAY_SALES.reduce(
+          (best, point) => (point.sales > best.sales ? point : best),
+          { label: "", sales: 0 },
+        )
       : undefined;
 
   return (
