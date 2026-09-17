@@ -182,7 +182,13 @@ function MetricasPage() {
                   cursor={false}
                   content={<ChartTooltipContent hideLabel formatter={(value) => <span className="font-bold text-foreground">{formatCOP(Number(value))}</span>} />}
                 />
-                <Bar dataKey="sales" fill="var(--color-sales)" radius={[5, 5, 0, 0]} maxBarSize={54} />
+                <Bar
+                  dataKey="sales"
+                  fill="var(--color-sales)"
+                  radius={[5, 5, 0, 0]}
+                  maxBarSize={54}
+                  isAnimationActive={false}
+                />
               </BarChart>
             ) : (
               <LineChart accessibilityLayer data={chartData} margin={{ left: 4, right: 18, top: 12 }}>
