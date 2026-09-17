@@ -9,6 +9,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Toma de pedidos en caja: elige ítems del menú, asigna beeper y envía a cocina." },
       { property: "og:title", content: "Caja — Shaks" },
       { property: "og:description", content: "Toma pedidos rápido y envíalos a cocina con un toque." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: CajaPage,
