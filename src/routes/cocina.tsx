@@ -9,6 +9,8 @@ export const Route = createFileRoute("/cocina")({
       { name: "description", content: "Pantalla de cocina (KDS): pedidos pendientes con temporizador y notificación al cliente." },
       { property: "og:title", content: "Cocina — Shaks" },
       { property: "og:description", content: "Pedidos pendientes con temporizador y aviso al cliente." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: CocinaPage,

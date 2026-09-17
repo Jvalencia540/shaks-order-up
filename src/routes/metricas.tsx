@@ -107,7 +107,7 @@ function MetricasPage() {
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-6">
-      <h1 className="font-display text-3xl text-foreground sm:text-4xl">Métricas de Hoy</h1>
+      <h1 className="font-display text-3xl text-foreground sm:text-4xl">Panel de Administración</h1>
       <p className="mt-1 text-lg text-muted-foreground">
         {new Date().toLocaleDateString("es-CO", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}
       </p>
@@ -205,6 +205,7 @@ function MetricasPage() {
                   strokeWidth={4}
                   dot={{ fill: "var(--gold)", stroke: "var(--primary)", strokeWidth: 2, r: 4 }}
                   activeDot={{ r: 7 }}
+                  isAnimationActive={false}
                 />
               </LineChart>
             )}
