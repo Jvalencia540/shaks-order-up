@@ -43,13 +43,32 @@ function CajaPage() {
     });
   };
 
-  const send = () => {
-    if (!beeper || items.length === 0) return;
-    addOrder(beeper, items);
-    setCart(new Map());
-    setBeeper(null);
-    setSent(true);
-  };
+const send = async () => {
+  if (!beeper || items.length === 0) return;
+
+  await supabase.from('pedidos').insert([
+    {
+      beeper,
+      items,
+      total,
+      estado: 'pending',
+      created_at: new Date().toISOString(),
+    }
+  ]);
+useEffect(() => {
+  async function loadProductos() {
+    const { data } = await supabase.from('productos').select('*');
+    if (data && data.length > 0) {
+      // actualiza el estado del menú con los datos de Supabase
+    }
+  }
+  loadProductos();
+}, []);
+  
+  setCart(new Map());
+  setBeeper(null);
+  setSent(true);
+};
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-6">
